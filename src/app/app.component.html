@@ -1,0 +1,66 @@
+<h1>
+  Welcome to {{ title }}!
+</h1>
+<mat-toolbar class="demo-app-header" color="primary">
+  <span>PMCS_Dev</span>
+  <span class="toolbar-seprator"></span>
+
+<!-- <button mat-icon-button (click)="sideNav.toggle()">
+  <mat-icon>{{ sideNav.opened ? 'close' : 'menu' }}</mat-icon>
+</button>
+<button mat-icon-button (click)="sideNav.toggle()">
+    <mat-icon>o</mat-icon>
+  </button>
+  <button mat-icon-button (click)="sideNav.toggle()">
+    <mat-icon>x</mat-icon>
+  </button> -->
+</mat-toolbar>
+<mat-sidenav-container class="demo-app-container">
+<mat-sidenav #sideNav class="demo-app-sidenav" mode="over" opened="true" mode="side" >
+  <!-- <mat-list> -->
+      <!-- <mat-nav-list>
+    <a [routerLink]="['/', 'dashboard', 'survey']" mat-list-item>SaleA</a>
+    <a [routerLink]="['/', 'dashboard', 'survey']" mat-list-item>SaleB</a>
+    <a [routerLink]="['/', 'dashboard', 'survey']" mat-list-item>Customer</a>
+    <a [routerLink]="['/', 'dashboard', 'survey']" mat-list-item>SaleFile</a>
+      </mat-nav-list> -->
+  <!-- </mat-list> -->
+  <mat-nav-list>
+    
+      <!-- <mat-icon>person</mat-icon> -->
+      <h3 matSubheader>HW2</h3>
+      <a [routerLink]="['/', 'home']" mat-list-item>Home</a>
+      <a [routerLink]="['/', 'home/demo1']" mat-list-item>demo1</a>
+      <a [routerLink]="['/', 'allSaleas']" mat-list-item>AllSaleAs</a>
+      <a [routerLink]="['/', 'salea']" mat-list-item>SaleA</a>
+      <a [routerLink]="['/', 'saleb']" mat-list-item>SaleB</a>
+      <a [routerLink]="['/', 'customer']" mat-list-item>Customer</a>
+      <a [routerLink]="['/', 'salefile']" mat-list-item>SaleFile</a>
+      <a [routerLink]="['/', 'material']" mat-list-item>material</a>
+      <a [routerLink]="['/', 'report']" mat-list-item>report</a>
+      <!-- <a [routerLink]="['/', 'demo4']" mat-list-item>demo4</a>
+      <a [routerLink]="['/', 'demo5']" mat-list-item>demo5</a> -->
+      <a [routerLink]="['/', 'demo6']" mat-list-item>demo6</a>
+      <a [routerLink]="['/', 'demo7']" mat-list-item>demo7</a>
+
+      <!-- <a [routerLink]="['/', 'demo8']" mat-list-item>demo8</a> -->
+      <!-- <a [routerLink]="['/', 'gridlist']" mat-list-item>GridList</a> -->
+      <mat-divider></mat-divider>
+      <!-- 另外一組選單 -->
+      <h3 matSubheader>其他頁面</h3>
+      <a [routerLink]="['/', 'salea']" mat-list-item>首頁</a>
+      <a href="https://www.google.com/" mat-list-item>Google</a>
+      <a href="www.facebook.com" mat-list-item>Facebook</a>
+    </mat-nav-list>
+    <router-outlet></router-outlet>
+</mat-sidenav>
+<router-outlet></router-outlet>
+<mat-sidenav-content>
+    <button mat-button (click)="sideNav.toggle()">切換左邊選單狀態</button>
+    <!-- <app-template-driven></app-template-driven>
+    <app-template-driven2></app-template-driven2> -->
+    
+    <router-outlet></router-outlet>
+</mat-sidenav-content>
+
+</mat-sidenav-container>

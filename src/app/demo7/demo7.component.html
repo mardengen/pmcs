@@ -1,0 +1,97 @@
+<mat-table [dataSource]="tt" matSort #sortTable="matSort">
+  <!-- Checkbox Column -->
+  <!-- <ng-container matColumnDef="select">
+    <th mat-header-cell *matHeaderCellDef>
+      <mat-checkbox (change)="$event ? masterToggle() : null"
+                    [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()">
+      </mat-checkbox>
+    </th>
+    <td mat-cell *matCellDef="let row">
+      <mat-checkbox (click)="$event.stopPropagation()"
+                    (change)="$event ? selection.toggle(row) : null"
+                    [checked]="selection.isSelected(row)">
+      </mat-checkbox>
+    </td>
+  </ng-container> -->
+    <ng-container matColumnDef="NEWDEPTID">
+      <mat-header-cell *matHeaderCellDef>NEWDEPTID</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.NEWDEPTID }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="NEWSUPERVISORID">
+      <mat-header-cell *matHeaderCellDef>NEWSUPERVISORID</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.NEWSUPERVISORID }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="REMARK">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>REMARK</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.REMARK }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="USERID">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>USERID</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.USERID }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="EMPLOYEEID">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>EMPLOYEEID</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.EMPLOYEEID }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="CHINESENAME">
+      <mat-header-cell *matHeaderCellDef>CHINESENAME</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.CHINESENAME }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="ENGLISHNAME">
+      <mat-header-cell *matHeaderCellDef>ENGLISHNAME</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.ENGLISHNAME }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="DEPTID">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>DEPTID</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.DEPTID }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="SUPERVISORID">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>SUPERVISORID</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.SUPERVISORID }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="EMAIL">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>EMAIL</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.EMAIL }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="LOCATIONNO">
+      <mat-header-cell *matHeaderCellDef>LOCATIONNO</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.LOCATIONNO }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="SALARYLOCATION">
+      <mat-header-cell *matHeaderCellDef>SALARYLOCATION</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.SALARYLOCATION }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="DISPLAYNAME">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>DISPLAYNAME</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.DISPLAYNAME }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="PHONE">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>PHONE</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.PHONE }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="COMPANY">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>COMPANY</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.COMPANY }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="management">
+      <mat-header-cell *matHeaderCellDef>
+        <u>管理</u>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-button color="primary" (click)="reply(row)">Modify</button>
+        <button mat-button color="warn" (click)="delete(row)">Del</button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="['NEWDEPTID', 'NEWSUPERVISORID', 'REMARK', 'USERID','EMPLOYEEID','CHINESENAME', 'ENGLISHNAME', 'DEPTID', 'SUPERVISORID','EMAIL','LOCATIONNO', 'SALARYLOCATION', 'DISPLAYNAME', 'PHONE','COMPANY','management']"></mat-header-row>
+    <mat-row *matRowDef="let emailRow; columns: ['NEWDEPTID', 'NEWSUPERVISORID', 'REMARK', 'USERID','EMPLOYEEID','CHINESENAME', 'ENGLISHNAME', 'DEPTID', 'SUPERVISORID','EMAIL','LOCATIONNO', 'SALARYLOCATION', 'DISPLAYNAME', 'PHONE','COMPANY','management']"></mat-row>
+
+  </mat-table>
+  <mat-paginator #paginator 
+  [length]="totalCount" 
+  [pageIndex]="0" 
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 15]">
+</mat-paginator>
+<button mat-button color="primary">Submit</button>
+<button mat-button color="primary">Clear</button>

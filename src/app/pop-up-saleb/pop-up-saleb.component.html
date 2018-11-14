@@ -1,0 +1,59 @@
+<!-- <form class="example-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()"> -->
+<form id="salebform" [formGroup]="popSalebForm">
+  <!--  [formGroup]="popSalebForm"-->
+    <Label ID="Label4">SaleNo</Label>
+    <input type="text" (ngModel)="SaleNo"  formControlName="SaleNo" id="SaleNo" required/>
+    <br />
+    <div *ngIf="submitted && popSalebForm.controls.SaleNo.errors" class="error">
+      <div *ngIf="popSalebForm.controls.SaleNo.errors.required">SaleNo is required</div>
+    </div>
+    <div *ngIf="submitted && popSalebForm.controls.SaleNo.errors" class="error">
+      <div *ngIf="popSalebForm.controls.SaleNo.errors.required">maxLength is 10</div>
+    </div>
+    <Label ID="Label5">ItemNo</Label>
+    <input type="text" (ngModel)="ItemNo"  formControlName="ItemNo" id="ItemNo"required/>
+    <br />
+    <div *ngIf="submitted && popSalebForm.controls.ItemNo.errors" class="error">
+      <div *ngIf="popSalebForm.controls.ItemNo.errors.required">ItemNo is required</div>
+    </div>
+    <div *ngIf="submitted && popSalebForm.controls.ItemNo.errors" class="error">
+      <div *ngIf="popSalebForm.controls.ItemNo.errors.required">maxLength is 10</div>
+    </div>
+    <Label ID="Label6">GoodsName</Label>
+    <input type="text" ng-model="GoodsName"  formControlName="GoodsName" id="GoodsName" required/>
+    <br />
+    <div *ngIf="submitted && popSalebForm.controls.GoodsName.errors" class="error">
+      <div *ngIf="popSalebForm.controls.GoodsName.errors.required">GoodsName is required</div>
+    </div>
+    <div *ngIf="submitted && popSalebForm.controls.GoodsName.errors" class="error">
+      <div *ngIf="popSalebForm.controls.GoodsName.errors.required">maxLength is 10</div>
+    </div>
+    <Label ID="Label4">Qty</Label>
+    <input type="text" ng-model="Qty"  formControlName="Qty" id="Qty" required/>
+    <div *ngIf="submitted && popSalebForm.controls.Qty.errors" class="error">
+        <div *ngIf="popSalebForm.controls.Qty.errors.required">Qty is required</div>
+      </div>
+      <div *ngIf="submitted && popSalebForm.controls.Qty.errors" class="error">
+        <div *ngIf="popSalebForm.controls.Qty.errors.required">maxLength is 10</div>
+      </div>
+    <Label ID="Label5">Price</Label>
+    <input type="text" ng-model="Price"  formControlName="Price" id="Price" required/>
+    <br />
+    <div *ngIf="submitted && popSalebForm.controls.Price.errors" class="error">
+      <div *ngIf="popSalebForm.controls.Price.errors.required">Price is required</div>
+    </div>
+    <div *ngIf="submitted && popSalebForm.controls.Price.errors" class="error">
+      <div *ngIf="popSalebForm.controls.Price.errors.required">maxLength is 10</div>
+    </div>
+    <Label ID="Label6">Amount</Label>
+    <input type="text" ng-model="Amount"  formControlName="Amount" id="Amount" required/>
+    <br />
+    <div *ngIf="submitted && popSalebForm.controls.Amount.errors" class="error">
+      <div *ngIf="popSalebForm.controls.Amount.errors.required">Amount is required</div>
+    </div>
+    <div *ngIf="submitted && popSalebForm.controls.Amount.errors" class="error">
+      <div *ngIf="popSalebForm.controls.Amount.errors.required">maxLength is 10</div>
+    </div>
+    <br />
+    <input type="button" ID="btnModify" (click)="ModifyRowDetail()" value="Modify" [disabled]="!popSalebForm.valid"/>
+</form>

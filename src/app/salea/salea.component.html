@@ -1,0 +1,186 @@
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-1.12.4.js">
+  </script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js">
+  </script>
+</head>
+  <body>
+<form class="example-form" [formGroup]="loginForm"  >
+    <mat-form-field class="example-full-width" >
+      <input matInput placeholder="SaleNo" formControlName="SaleNo" id="SaleNo" required>
+    </mat-form-field>
+    <div *ngIf="submitted && loginForm.controls.SaleNo.errors" class="error">
+      <div *ngIf="loginForm.controls.SaleNo.errors.required">SaleNo is required</div>
+    </div>
+    <div *ngIf="submitted && loginForm.controls.SaleDate.errors" class="error">
+      <div *ngIf="loginForm.controls.SaleDate.errors.required">maxLength is 10</div>
+    </div>
+    <input type="button" (click)="getIssuees()" value="getSaleB"/>
+    <input type="button" (click)="Search()" value="Search"/>
+    <!-- <input type="button" (click)="Update()" value="Update"/>
+    <input type="button" (click)="Delete()" value="Delete"/> -->
+    <!-- <button mat-button color="primary" (click)="openDialog()">SaleFile</button> -->
+    <!-- <button mat-raised-button (click)="openDialog()">Pick one</button> -->
+  <br>
+    <mat-form-field class="example-full-width">
+      <textarea matInput placeholder="SaleDate" formControlName="SaleDate" id="SaleDate" required></textarea>
+    </mat-form-field>
+    <div *ngIf="submitted && loginForm.controls.SaleDate.errors" class="error">
+      <div *ngIf="loginForm.controls.SaleDate.errors.required">SaleDate is required</div>
+    </div>
+    <div *ngIf="submitted && loginForm.controls.SaleDate.errors" class="error">
+      <div *ngIf="loginForm.controls.SaleDate.errors.required">maxLength is 20</div>
+    </div>
+    <!-- <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field> -->
+    <br>
+    <mat-form-field class="example-full-width" >
+        <input matInput placeholder="CustomerNo" formControlName="CustomerNo" id="CustomerNo" required>
+      </mat-form-field>
+      <div *ngIf="submitted && loginForm.controls.SaleDate.errors" class="error">
+        <div *ngIf="loginForm.controls.SaleDate.errors.required">CustomerNo is required</div>
+      </div>
+      <div *ngIf="submitted && loginForm.controls.SaleDate.errors" class="error">
+        <div *ngIf="loginForm.controls.SaleDate.errors.maxLength">maxLength is 10</div>
+      </div>
+      <!-- <button mat-button color="primary" (click)="openDialog2()">Customer</button>
+      <button mat-button color="primary" (click)="openDialog3()">Saleb</button> -->
+
+    <br>
+      <mat-form-field class="example-full-width" >
+        <textarea matInput placeholder="DeAddress" formControlName="DeAddress" id="DeAddress" required></textarea>
+      </mat-form-field>
+      <div *ngIf="submitted && loginForm.controls.DeAddress.errors" class="error">
+        <div *ngIf="loginForm.controls.DeAddress.errors.required">DeAddress is required</div>
+      </div>
+      <div *ngIf="submitted && loginForm.controls.SaleDate.errors" class="error">
+        <div *ngIf="loginForm.controls.SaleDate.errors.maxLength">maxLength is 125</div>
+      </div>
+      <br>
+      <mat-form-field class="example-full-width" >
+          <input matInput placeholder="PhoneNo" formControlName="PhoneNo" id="PhoneNo" required >
+        </mat-form-field>
+        <div *ngIf="submitted && loginForm.controls.PhoneNo.errors" class="error">
+          <div *ngIf="loginForm.controls.PhoneNo.errors.required">PhoneNo is required</div>
+        </div>
+        <div *ngIf="submitted && loginForm.controls.PhoneNo.errors" class="error">
+          <div *ngIf="loginForm.controls.PhoneNo.errors.maxLength">maxLength is 16</div>
+        </div>
+      <br>
+        <mat-form-field class="example-full-width" >
+          <textarea matInput placeholder="TotalAmt" formControlName="TotalAmt" id="TotalAmt" required></textarea>
+        </mat-form-field>
+        <div *ngIf="submitted && loginForm.controls.TotalAmt.errors" class="error">
+          <div *ngIf="loginForm.controls.TotalAmt.errors.required">TotalAmt is required</div>
+        </div>
+        <div *ngIf="submitted && loginForm.controls.TotalAmt.errors" class="error">
+          <div *ngIf="loginForm.controls.TotalAmt.errors.maxLength">maxLength is 30</div>
+        </div>
+        <!-- <button mat-button color="primary" (click)="Save()">Add</button> -->
+          <!-- add is add to new row -->
+        <!-- <button mat-button color="primary" (click)="ModifyByKey()">ModifyByKey</button> -->
+        <!-- 所以要先search key若不存在就無法modify -->
+        <!-- <button mat-button color="primary" (click)="openDialog()">DelAll</button> -->
+        <!-- delete all is delete all rows of gridview -->
+        
+  
+
+  <mat-form-field>
+    <input matInput #filter placeholder="搜尋">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+  <button mat-raised-button (click)="addRow()"> Add row </button>
+<button mat-raised-button (click)="removeRow()"> Remove row </button>
+<button mat-button color="primary" (click)="openDialog()">DelAll</button>
+<!-- <appdeletechk (notify)="message=$event"></appdeletechk> -->
+<!-- <button mat-raised-button (click)="shuffle()"> Shuffle </button> -->
+  <mat-table [dataSource]="tt" matSort>
+      <!-- (matSortChange)="changeSort($event) matSortmatSort #sortTable="matSort"-->
+  <!-- Checkbox Column -->
+   <ng-container matColumnDef="select">
+    <th mat-header-cell *matHeaderCellDef>
+      <mat-checkbox (change)="$event ? masterToggle() : null"
+                    [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()">
+      </mat-checkbox>
+    </th>
+    <td mat-cell *matCellDef="let row">
+      <mat-checkbox (click)="$event.stopPropagation()"
+                    (change)="$event ? selection.toggle(row) : null"
+                    [checked]="selection.isSelected(row)">
+      </mat-checkbox>
+    </td>
+  </ng-container>
+    <ng-container matColumnDef="SaleNo">
+      <mat-header-cell *matHeaderCellDef>SaleNo</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.SaleNo }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="ItemNo">
+      <mat-header-cell *matHeaderCellDef>ItemNo</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.ItemNo }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="GoodsName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>GoodsName</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.GoodsName }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Qty">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Qty</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.Qty }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Price">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Price</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.Price }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Amount">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Amount</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.Amount }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="management">
+      <mat-header-cell *matHeaderCellDef>
+        <u>管理</u>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-button color="primary"  (click)="$event ? ModifyRow(row) : null">Edit</button>
+        <button mat-button color="warn" (click)="$event ?DeleteRow(row): null">Del</button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="['select','SaleNo', 'ItemNo', 'GoodsName', 'Qty','Price','Amount','management']"></mat-header-row>
+    <mat-row *matRowDef="let emailRow; columns: ['select','SaleNo', 'ItemNo', 'GoodsName', 'Qty','Price','Amount', 'management']"></mat-row>
+    <!-- <table>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+      (click)="selection.toggle(row)">
+  </tr>
+</table> -->
+  </mat-table>
+  <!-- <mat-paginator #paginator 
+  [length]="totalCount" 
+  [pageIndex]="0" 
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 15]">
+</mat-paginator> -->
+<h3>檔案上傳</h3>
+<!-- <form enctype="multipart/form-data" method="post">
+    <label for="picked">Choose file to upload</label> -->
+      <!-- <input type="file" id="picked" name="somename" #picked> -->
+      <div>
+          <input type="file" id="picked" 
+            (click)="message=''"
+             #picked multiple>
+        </div>
+        <!-- (change)="uploadFile(picked)" -->
+      <p *ngIf="message">{{message}}</p>
+  <!-- <input type="submit" (change)="uploadFile(picked)"> -->
+<!-- </form>onPicked(picked) -->
+</form>
+<button mat-button color="primary" (click)="onSubmit(picked)">Submit</button>
+<button mat-button color="primary" (click)="Clear()">Clear</button>
+</body>
+
+</html>

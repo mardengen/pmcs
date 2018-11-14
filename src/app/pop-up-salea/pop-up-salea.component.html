@@ -1,0 +1,59 @@
+<!-- <form class="example-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()"> -->
+<form id="saleaform" [formGroup]="popSaleaForm">
+  <!--  [formGroup]="popSaleaForm"-->
+    <Label ID="Label4">SaleNo</Label>
+    <input type="text" (ngModel)="SaleNo"  formControlName="SaleNo" id="SaleNo" required/>
+    <br />
+    <div *ngIf="submitted && popSaleaForm.controls.SaleNo.errors" class="error">
+      <div *ngIf="popSaleaForm.controls.SaleNo.errors.required">SaleNo is required</div>
+    </div>
+    <div *ngIf="submitted && popSaleaForm.controls.SaleNo.errors" class="error">
+      <div *ngIf="popSaleaForm.controls.SaleNo.errors.required">maxLength is 10</div>
+    </div>
+    <Label ID="Label5">SaleDate</Label>
+    <input type="text" (ngModel)="SaleDate"  formControlName="SaleDate" id="SaleDate"required/>
+    <br />
+    <div *ngIf="submitted && popSaleaForm.controls.SaleDate.errors" class="error">
+      <div *ngIf="popSaleaForm.controls.SaleDate.errors.required">SaleDate is required</div>
+    </div>
+    <div *ngIf="submitted && popSaleaForm.controls.SaleDate.errors" class="error">
+      <div *ngIf="popSaleaForm.controls.SaleDate.errors.required">maxLength is 10</div>
+    </div>
+    <Label ID="Label6">CustomerNo</Label>
+    <input type="text" ng-model="CustomerNo"  formControlName="CustomerNo" id="CustomerNo" required/>
+    <br />
+    <div *ngIf="submitted && popSaleaForm.controls.CustomerNo.errors" class="error">
+      <div *ngIf="popSaleaForm.controls.CustomerNo.errors.required">CustomerNo is required</div>
+    </div>
+    <div *ngIf="submitted && popSaleaForm.controls.CustomerNo.errors" class="error">
+      <div *ngIf="popSaleaForm.controls.CustomerNo.errors.required">maxLength is 10</div>
+    </div>
+    <Label ID="Label4">DeAddress</Label>
+    <input type="text" ng-model="DeAddress"  formControlName="DeAddress" id="DeAddress" required/>
+    <div *ngIf="submitted && popSaleaForm.controls.DeAddress.errors" class="error">
+        <div *ngIf="popSaleaForm.controls.DeAddress.errors.required">DeAddress is required</div>
+      </div>
+      <div *ngIf="submitted && popSaleaForm.controls.DeAddress.errors" class="error">
+        <div *ngIf="popSaleaForm.controls.DeAddress.errors.required">maxLength is 10</div>
+      </div>
+    <Label ID="Label5">PhoneNo</Label>
+    <input type="text" ng-model="PhoneNo"  formControlName="PhoneNo" id="PhoneNo" required/>
+    <br />
+    <div *ngIf="submitted && popSaleaForm.controls.PhoneNo.errors" class="error">
+      <div *ngIf="popSaleaForm.controls.PhoneNo.errors.required">PhoneNo is required</div>
+    </div>
+    <div *ngIf="submitted && popSaleaForm.controls.PhoneNo.errors" class="error">
+      <div *ngIf="popSaleaForm.controls.PhoneNo.errors.required">maxLength is 10</div>
+    </div>
+    <Label ID="Label6">TotalAmt</Label>
+    <input type="text" ng-model="TotalAmt"  formControlName="TotalAmt" id="TotalAmt" required/>
+    <br />
+    <div *ngIf="submitted && popSaleaForm.controls.TotalAmt.errors" class="error">
+      <div *ngIf="popSaleaForm.controls.TotalAmt.errors.required">TotalAmt is required</div>
+    </div>
+    <div *ngIf="submitted && popSaleaForm.controls.TotalAmt.errors" class="error">
+      <div *ngIf="popSaleaForm.controls.TotalAmt.errors.required">maxLength is 10</div>
+    </div>
+    <br />
+    <input type="button" ID="btnModify" (click)="ModifyRowDetail()" value="Modify" [disabled]="!popSaleaForm.valid"/>
+</form>

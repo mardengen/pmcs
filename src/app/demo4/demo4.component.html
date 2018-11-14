@@ -1,0 +1,58 @@
+<mat-table [dataSource]="tt" matSort #sortTable="matSort">
+  <!-- Checkbox Column -->
+  <!-- <ng-container matColumnDef="select">
+    <th mat-header-cell *matHeaderCellDef>
+      <mat-checkbox (change)="$event ? masterToggle() : null"
+                    [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()">
+      </mat-checkbox>
+    </th>
+    <td mat-cell *matCellDef="let row">
+      <mat-checkbox (click)="$event.stopPropagation()"
+                    (change)="$event ? selection.toggle(row) : null"
+                    [checked]="selection.isSelected(row)">
+      </mat-checkbox>
+    </td>
+  </ng-container> -->
+    <ng-container matColumnDef="PRType_Code">
+      <mat-header-cell *matHeaderCellDef>PRType_Code</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.PRType_Code }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="PRFee_Class">
+      <mat-header-cell *matHeaderCellDef>PRFee_Class</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.PRFee_Class }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Site">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Site</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.Site }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="PRTypeName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>PRTypeName</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.PRTypeName }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="management">
+      <mat-header-cell *matHeaderCellDef>
+        <u>管理</u>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-button color="primary" (click)="reply(row)">Modify</button>
+        <button mat-button color="warn" (click)="delete(row)">Del</button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="['PRType_Code', 'PRFee_Class', 'Site', 'PRTypeName','management']"></mat-header-row>
+    <mat-row *matRowDef="let emailRow; columns: ['PRType_Code', 'PRFee_Class', 'Site', 'PRTypeName','management']"></mat-row>
+    <!-- <table>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+      (click)="selection.toggle(row)">
+  </tr>
+</table> -->
+  </mat-table>
+  <mat-paginator #paginator 
+  [length]="totalCount" 
+  [pageIndex]="0" 
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 15]">
+</mat-paginator>
+<button mat-button color="primary">Submit</button>
+<button mat-button color="primary">Clear</button>

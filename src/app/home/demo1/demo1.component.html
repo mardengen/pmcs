@@ -1,0 +1,11 @@
+<p>
+  demo1-UserProfile API!
+</p>
+<label>UserID</label>
+<div *ngIf='userProfile?.user'></div>
+<input type="text" value="{{this.User.UserID}}">
+<label>language</label>
+<input type="text" value="{{this.User.DefaultLanguage}}">
+<label>zone</label>
+<input type="text" value="{{this.User.DefaultTimeZone}}"> 
+<router-outlet></router-outlet>

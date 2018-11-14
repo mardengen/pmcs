@@ -1,0 +1,35 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+    <div class="form-group" border="1">
+        <table bgcolor="#00FF00" style=" border: 1px solid"  width="1100">
+                <label ID="Label1" style="font-weight: 700" Text="Heading">Heading</label><p>
+                <label for="FormNo">FormNo</label><input type="text" id="txtFormNo"/><input type="button" value="Get" class="btn-primary" (click)="getUser()"/><input type="button" value="GetNextFormNo" class="btn-primary" (click)="GetNextFormNo()"/>
+                <!-- <label for="FormNo">FormNo</label><input type="text" id="Form"/><input type="button" value="GetMasterAndDetail" class="btn-primary" (click)="GetMasterAndDetail()"/> -->
+                <label for="SiteNo">SiteNo</label><input type="text" id="txtSiteNo"/><input type="button" value="Get" class="btn-primary" (click)="getSiteNo()"/><p>
+                <label for="projectType">ProjectType</label>
+                <select id="ddlprojectType" name="projectType" >
+                        <option value="Product Project">Product Project</option>
+                        <option value="Expense Program">Expense Program</option>
+                        <option value="Apply Departmental (non-Project/non-Program)">Apply Departmental (non-Project/non-Program)</option>
+                </select>
+                <label for="projectCode">projectCode</label><input type="text" id="txtprojectCode" /><input type="button" value="Get"  class="btn-primary" (click)="getprojectCode()"/><p>
+                <label for="Appl.Date">Appl.Date</label><input type="text" id="txtApplDate"/>
+                <!-- <input type="button"value="Get"  class="btn-primary" (click)="getApplDate()"/> -->
+                <label for="Buyer">Buyer</label><input type="text" id="txtBuyer"/><input type="button" class="btn-primary" value="Get"  (click)="getBuyer()"/><p>
+                <label for="EquipController">Equip.Controller</label><input type="text" id="txtEqiCtrller"/><input type="button" value="Get"  class="btn-primary" (click)="getEquipController()"/>
+                <label for="FIN">FIN</label><input type="text" id="txtFIN"/><input type="button" class="btn-primary" value="Get"  (click)="getFIN()"/><p>
+                <label for="Amount">Amount</label><input type="text" id="txtAmount"/>
+                <!-- <input type="button" class="btn-primary" value="Get"  (click)="getAmount()"/><p> -->
+        </table>
+        <!-- <label for="Heading">Heading</label><p> -->
+        
+    </div>
+
+    <button mat-raised-button (click)="submit()"> Submit </button>
+        <!-- <input type="button" class="btn-primary" value="Submit" (click)="Submit()" /> -->
+</body>
+<router-outlet></router-outlet>
+</html>
